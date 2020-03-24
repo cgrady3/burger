@@ -11,8 +11,8 @@ var orm = {
             callback(res)
         });
     },
-    insertOne: function (burger, condition, callback) {
-        var queryString = "INSERT INTO burgers (burger_name, devoured) values (" + burger + "," + condition + ")";
+    insertOne: function (burger, callback) {
+        var queryString = "INSERT INTO burgers (burger_name, devoured) values ('" + burger + "', '0')";
         console.log(queryString);
         connection.query(queryString, function (err, res) {
             if (err) throw err;
@@ -20,8 +20,8 @@ var orm = {
             callback(res);
         });
     },
-    updateOne: function (id, condition, callback) {
-        var queryString = "UPDATE burgers SET devoured = " + condition + "WHERE id = " + id;
+    updateOne: function (id, callback) {
+        var queryString = "UPDATE burgers SET devoured = 1 WHERE id = " + id;
         console.log(queryString);
         connection.query(queryString, function (err, res) {
             if (err) throw err;

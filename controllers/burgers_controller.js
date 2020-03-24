@@ -16,21 +16,17 @@ router.get("/", function (req, res) {
 });
 
 router.post("/api/burgers", function (req, res) {
-    var burgerName = req.body.burger_name;
-    var condition = req.body.devoured;
-    burger.create(
-        burgerName, condition, function (result) {
-            // Send back the ID of the new burger
-            res.json(result);
-        }
+    var burgerName = req.body.name;
+    burger.create(burgerName, function (result) {
+        // Send back the ID of the new burger
+        res.json(result);
+    }
     );
 });
 
 router.put("/api/burgers/:id", function (req, res) {
     var id = req.params.id;
-    var condition = req.body.devoured;
-
-    burger.update(id, condition, function (result) {
+    burger.update(id, function (result) {
         if (result.changedRows == 0) {
             // If no rows were changed, then the ID must not exist, so 404
             return res.status(404).end();

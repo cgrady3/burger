@@ -6,8 +6,8 @@ var burger = {
             callback(res);
         });
     },
-    create: function (burger, condition, callback) {
-        orm.insertOne(burger, condition, function (res) {
+    create: function (burger, callback) {
+        orm.insertOne(burger, function (res) {
             callback(res);
         });
     },

@@ -1,13 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
-		<link rel="stylesheet" href="/assets/css/burger_style.css" type="text/css" />
-		<title>Devour that Burger!</title>
-		<script src="https://code.jquery.com/jquery.js"></script>
-		<script src="/assets/js/burger.js"></script>
-	</head>
-	<body>
-		{{{ body }}}
-	</body>
+	<link rel="stylesheet" href="/assets/css/burger_style.css" type="text/css" />
+	<title>Devour that Burger!</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	{{!-- <script src="../../public/assets/js/burgersJS.js" defer></script> --}}
+</head>
+
+<body>
+	{{{ body }}}
+	<script type='text/javascript'>
+		var currentURL = window.location.origin;
+
+		$("#submitBtn").click(function (event) {
+			event.preventDefault();
+			var name = $("#newBurg").val().trim();
+			var burgName = {
+				name: name
+			}
+			$.post(currentURL + "/api/burgers", burgName)
+				.then(function (response) {
+					console.log(response);
+					location.reload();
+				});
+		});
+
+		$(".change-condition").click(function () {
+			var id = $(this).data('id');
+			$.ajax("/api/burgers/" + id,  {
+				type: "PUT",
+			}).then(function (response) {
+					console.log(response);
+					location.reload();
+				});
+		});
+	</script>
+</body>
+
 </html>
