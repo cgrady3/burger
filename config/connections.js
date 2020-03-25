@@ -1,7 +1,7 @@
 // Set up MySQL connection.
 var mysql = require("mysql");
 var connection;
-var JAWS_URL = 'mysql://w1tzf14fb80yqk7v:ohxiw2okh9kddnsf@blonze2d5mrbmcgf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/gn8frimh9j39wfjg';
+//var JAWS_URL = 'mysql://w1tzf14fb80yqk7v:ohxiw2okh9kddnsf@blonze2d5mrbmcgf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/gn8frimh9j39wfjg';
 
 if (process.env.JAWS_URL) {
   connection = mysql.createConnection(process.env.JAWS_URL);
